@@ -1,0 +1,105 @@
+@import url(https://fonts.googleapis.com/css?family=Gorditas);
+div.infobar{
+	background-color:rgba(74, 100, 171, 0.76);
+	width:100%;
+	height:3em;
+	align-items: center;
+	justify-content: flex-end;
+	display:flex;
+	position: fixed
+
+}
+div.main{
+	margin-top:5em;
+	width:40%;
+}
+.postform{
+	margin-top:2em;
+}
+li{
+	width:50%;
+	text-align: center;
+}
+.main a{
+	align-items: center;
+}
+form.postform{
+	display: flex;
+    flex-direction:column;
+}
+
+form.commentform{
+	display: flex;
+    flex-direction:row;
+}
+.thumb{
+	width: 150px;
+}
+img.preview{
+	width:20em;
+	height:15em;
+}
+.postdiv{
+	background-color:#fff;
+}
+output#image-name{
+	display:inline;
+}
+button[name^="logoutbtn"]{
+	margin-right:5em;
+	color:#fff;
+	padding: 0;
+	border: none;
+	background: none;
+	vertical-align: middle;
+}
+
+.likeButton{
+	font-size:4em;
+	color:#ccc;
+	margin: 0;
+	display:block;
+	width: min-content;  
+	padding: 0;
+	border: none;
+	background: none;	
+}
+.likeButton:hover{
+	color:pink;
+}
+.like{
+	color:pink;
+}
+.like:hover{
+	color:#ccc;
+}
+.area{
+	margin-top:0.5em;
+}
+strong[name^="username"]{
+	color:#000;
+}
+.context{
+	padding:10px 1em 1em 1em;
+	border-bottom: solid #ccc;
+	border-right: solid #ccc;
+    margin-bottom:2em;
+}
+
+.postdiv{
+}
+h4{
+	margin-right:5em;
+}
+li a{
+	background:#95d7f7;
+}
+
+
+body{
+	background:rgba(204, 204, 204, 0.21);
+	align-items: center;
+	display:flex;
+	flex-direction: column;
+	font-family: 'Gorditas';
+}
