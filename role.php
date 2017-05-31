@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	ob_start();
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+	include("db/db_config.php");
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,32 +19,21 @@
     <title>Role</title>
   </head>
   <body>
-    <h1>職業選擇</h1>
-    <div class="role">
+    <?php
+        if(isset($_POST['comfirmbtn'])){
+          $query = "INSERT INTO ".$db_table[1]." (".$table2_structure[0].",".$table2_structure[1].",".$table2_structure[2].",".$table2_structure[3].") VALUES(?,?,?,?)";
+          $insertrole = $db->prepare($query);
+          //"SELECT * FROM role where username = username";
+          $insertrole->execute(array($_POST['nickname'],$_POST['sex'],$_POST['role'],$_COOKIE['name']));
+          header('Location: main.php');
+          exit;
+        }else if(isset($_POST['checkbtn'])){
+            include('layout/role.check.php');
+        }else{
+            include('layout/role.table.php');
+        }
 
-      <form class="" action="role.php"  method="post">
-              <div class="form-group">
-                <label for="nickname">暱稱</label>
-                <input type="text" class="form-control" value="<?php if(isset($_POST['nickname'])){echo $_POST['nickname'];} ?>" id="nickname" name="nickname" placeholder="暱稱" required="required">
-              </div>
-              <div class="form-group">
-                <label for="role">性別</label>
-                <select class="form-control" id="role">
-                    <option>男</option>
-                    <option>女</option>
-                </select>
-              </div>
-              <div class="form-group">
-                  <label for="role">職業</label>
-                  <select class="form-control" id="role">
-                      <option>測試者</option>
-                  </select>
-              </div>
-            <div class="form-group sub">
-  						<button type="submit" name="checkbtn" id="checkbtn">確定</button>
-  					</div>
-      </form>
-    </div>
+    ?>
 
   </body>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

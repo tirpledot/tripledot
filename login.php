@@ -6,7 +6,16 @@
 	include("db/db_config.php");
 	if(isset($_COOKIE['name'])){
 					$_SESSION['name'] = $_COOKIE['name'];
-					header('Location: index.php');
+					$query = "SELECT * FROM ? where ? = ?";
+					$checkuser = $db->prepare($query);
+					//"SELECT * FROM role where username = username";
+					$checkrole->execute(array($db_table[1],$table2_structure[3],$username));
+					$row = $checkrole->fetch(PDO::FETCH_ASSOC);
+					if(isset($row['username'])){
+							header('Location: main.php');
+					}else{
+							header('Location: role.php');
+					}
 					exit; //prevents further page loading
 	}
 ?>
@@ -38,18 +47,15 @@
 
 			//Step2
 			$error = 0;
-			$query = "SELECT * FROM member2";
-			$sth = $db->prepare($query);
-			$sth->execute();
-
 			if(isset($_POST['registerbtn'])){
 				//Check password
 				$username = $_POST['Username'];
 				$password = $_POST['Password2'];
 
 				//Check Account exist or not
-				$query = "SELECT * FROM member2 where username = ?";
+				$query = "SELECT * FROM ".$db_table[0]." where ".$table1_structure[0]." = ?";
 				$checkuser = $db->prepare($query);
+				//"SELECT * FROM acount where username = username";
 				$checkuser->execute(array($username));
 				$row = $checkuser->fetch(PDO::FETCH_ASSOC);
 				if(isset($row['username'])){
@@ -59,8 +65,9 @@
 						$error = 2;
 					}else{
 					//Insert new Account
-						$sql = "INSERT INTO account (username, password,time) VALUES(?,?,NOW())";
+						$sql = "INSERT INTO ".$db_table[0]." (".$table1_structure[0].",".$table1_structure[1].",".$table1_structure[2].") VALUES(?,?,NOW())";
 						$sth = $db->prepare($sql);
+						//"INSERT INTO account (username, password,time) VALUES(?,?,NOW())";
 						$sth->execute(array($username,$password));
 						$_POST = array();
 						$error = -1;
@@ -71,15 +78,16 @@
 				$password = $_POST['LoginPassword'];
 
 				//Check Account exist or not
-				$query = "SELECT * FROM acount where username = ? AND password = ?";
+				$query = "SELECT * FROM ".$db_table[0]." where ".$table1_structure[0]. " = ? AND " .$table1_structure[1]. " = ?";
 				$checkuser = $db->prepare($query);
+				//"SELECT * FROM acount where username = ? AND password = ?";
 				$checkuser->execute(array($username,$password));
 				$row = $checkuser->fetch(PDO::FETCH_ASSOC);
 				if(isset($row['username'])){
 					setcookie("name", $username, time() + (86400 * 30), "/"); // 86400 = 1 day
 					setcookie("pwd", $password, time() + (86400 * 30), "/"); // 86400 = 1 day
 					$_SESSION['name'] = $_COOKIE['name'];
-					header('Location: index.php');
+					header('Location: role.php');
 					exit;
 					$error = -2;
 				}else{
@@ -116,7 +124,7 @@
 		</ul>
 		<div class ="tab-content">
 			<div role="tabpanel" class="tab-pane fade <?php if($error != 1 and $error !=2)echo "in active"; ?>" id="login">
-				<form action="role.php" method="post">
+				<form action="login.php" method="post">
 					<div class="form-group">
 						<input type="Username" class="form-control" name="LoginUsername" placeholder="Username" maxlength="15" value="<?php if($error == -2)echo $username; ?>">
 					</div>
