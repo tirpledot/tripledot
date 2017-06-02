@@ -1,6 +1,4 @@
-$(document).ready(function(){
-    $('#battle_info').scrollbar();
-});
+
 function hiddenform(){
     $('#checkbtn').on('click', function(evt) {
         if($('#nickname').val()){
@@ -18,8 +16,12 @@ function damage(){
 
     var battle_info = $("<h5></h5>").text("對"+mon+"造成 "+atk+" 點傷害");
     var battle_info2 = $("<h5></h5>").text("你受到 "+mon_atk+" 點傷害");
-    $('#mon_info').attr({'hp':mon_hp-atk});
-    $('#role_info').attr({'hp':hp-mon_atk});
+    var cur_mhp = mon_hp-atk;
+    var cur_rhp = hp-mon_atk;
+    $('#mon_info').attr({'hp': cur_mhp});
+    $('#mon_info').text("name : "+mon+" , mon_hp = "+cur_mhp+" , mon_atk = 2");
+    $('#role_info').attr({'hp': cur_rhp});
+    $('#role_info').text("hp =" +cur_rhp+  ", atk =" +atk);
     $('#battle_info').append(battle_info,battle_info2);
     if(mon_hp - atk <= 0){
         var battle_info = $("<h5></h5>").text(" 戰鬥勝利 ");
@@ -32,5 +34,5 @@ function damage(){
     $('#battle_info').scrollTop($('#battle_info')[0].scrollHeight);
     //$('#battle_info').animate({
       //  scrollTop: $('#battle_info')[0].scrollHeight}, 1000);
-    console.log(mon_hp,mon_atk,hp,atk);
+    console.log(cur_mhp,mon_atk,cur_rhp,atk);
 }
