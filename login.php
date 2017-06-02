@@ -6,10 +6,10 @@
 	include("db/db_config.php");
 	if(isset($_COOKIE['name'])){
 					$_SESSION['name'] = $_COOKIE['name'];
-					$query = "SELECT * FROM ? where ? = ?";
-					$checkuser = $db->prepare($query);
+					$query = "SELECT * FROM ".$db_table[1]." where ".$table2_structure[3]." = ?";
+					$checkrole = $db->prepare($query);
 					//"SELECT * FROM role where username = username";
-					$checkrole->execute(array($db_table[1],$table2_structure[3],$username));
+					$checkrole->execute(array($username));
 					$row = $checkrole->fetch(PDO::FETCH_ASSOC);
 					if(isset($row['username'])){
 							header('Location: main.php');
