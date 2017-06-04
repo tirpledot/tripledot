@@ -4,8 +4,7 @@
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 	include("db/db_config.php");
-	if(isset($_COOKIE['name'])){
-					$_SESSION['name'] = $_COOKIE['name'];
+	if(isset($_SESSION['name'])){
 					$query = "SELECT * FROM ".$db_table[1]." where ".$table2_structure[3]." = ?";
 					$checkrole = $db->prepare($query);
 					//"SELECT * FROM role where username = username";
@@ -84,9 +83,8 @@
 				$checkuser->execute(array($username,$password));
 				$row = $checkuser->fetch(PDO::FETCH_ASSOC);
 				if(isset($row['username'])){
-					setcookie("name", $username, time() + (86400 * 30), "/"); // 86400 = 1 day
-					setcookie("pwd", $password, time() + (86400 * 30), "/"); // 86400 = 1 day
-					$_SESSION['name'] = $_COOKIE['name'];
+					$_SESSION['name'] =  $username;
+					$_SESSION['pwd'] = $password;
 					header('Location: role.php');
 					exit;
 					$error = -2;

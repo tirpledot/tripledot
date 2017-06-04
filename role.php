@@ -24,7 +24,7 @@
           $query = "INSERT INTO ".$db_table[1]." (".$table2_structure[0].",".$table2_structure[1].",".$table2_structure[2].",".$table2_structure[3].") VALUES(?,?,?,?)";
           $insertrole = $db->prepare($query);
           //"SELECT * FROM role where username = username";
-          $insertrole->execute(array($_POST['nickname'],$_POST['sex'],$_POST['role'],$_COOKIE['name']));
+          $insertrole->execute(array($_POST['nickname'],$_POST['sex'],$_POST['role'],$_SESSION['name']));
           header('Location: main.php');
           exit;
         }else if(isset($_POST['checkbtn'])){
