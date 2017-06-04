@@ -3,6 +3,7 @@ session_start();
 ob_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+include("db/db_config.php");
 include('php/battle_load.php');
 $hp = 100;
 $atk = 4;
@@ -20,7 +21,7 @@ $atk = 4;
     <title>Battle</title>
   </head>
   <body>
-      <h4 id = "mon_info"<?php echo "mon = ".$mon." hp = ".$mon_hp." atk = ".$mon_atk;?>>name : 兔子 , mon_hp = 10 , mon_atk = 2</h4>
+      <h4 id = "mon_info"<?php echo "mon = ".$mon_data['name']." hp = ".$mon_data['hp']." atk = ".$mon_data['atk'];?>>name : 兔子 , mon_hp = 10 , mon_atk = 2</h4>
       <div name="battle_info" id="battle_info"  style="height:20em;width:100%; overflow-x:hidden;overflow-y:auto">
         <h4 class="text-center">戰鬥開始</h4>
       </div>

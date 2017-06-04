@@ -25,13 +25,36 @@ function damage(){
           class:'text-center',
           text :' 戰鬥勝利 '
         }).appendTo('#battle_info');
-
-        $('#attack').text('按這裡繼續遊戲');
-        $('#attack').attr({'onclick' : 'window.location.assign(\'main.php\');'});
+        $('#attack').remove();
+        var result =$('<form/>',{
+          action:'main.php',
+          method :'POST'
+        });
+        $('#battle_info').after(result);
+        $('<button/>',{
+          type : 'submit',
+          text : '按這裡繼續遊戲',
+          name : 'win'
+        }).appendTo(result);
     }
     else if(cur_rhp <= 0){
-        var battle_info = $('<h5></h5>').text(' 你死了 ');
+      var battle_info = $('<h5/>',{
+        class:'text-center',
+        text :' 你已陣亡 '
+      }).appendTo('#battle_info');
+        $('#attack').remove();
         $('#battle_info').append(battle_info);
+        var result =$('<form/>',{
+          action:'main.php',
+          method :'POST'
+        });
+        $('#battle_info').after(result);
+        $('<button/>',{
+          type : 'submit',
+          text : '按這裡繼續遊戲',
+          name : 'win'
+        }).appendTo(result);
+
     }
     $('#battle_info').scrollTop($('#battle_info')[0].scrollHeight);
     //$('#battle_info').animate({

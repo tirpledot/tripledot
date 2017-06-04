@@ -1,9 +1,6 @@
 <?php
-    include ('db/db_config');
-
-    $sql = "Select * from monster where x = 1 and y = 1";
+    $sql = "Select * from monster where x = ? and y = ?";
     $stmt = $db->prepare($sql);
-    $stmt -> execute();
+    $stmt -> execute(array($_SESSION['x'],$_SESSION['y']));
     $mon_data = $stmt->fetch(PDO::FETCH_ASSOC);
-
 ?>
