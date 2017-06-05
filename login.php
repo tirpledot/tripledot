@@ -8,7 +8,7 @@
 					$query = "SELECT * FROM ".$db_table[1]." where ".$table2_structure[3]." = ?";
 					$checkrole = $db->prepare($query);
 					//"SELECT * FROM role where username = username";
-					$checkrole->execute(array($username));
+					$checkrole->execute(array($_SESSION['name']));
 					$row = $checkrole->fetch(PDO::FETCH_ASSOC);
 					if(isset($row['username'])){
 							header('Location: main.php');
@@ -83,10 +83,19 @@
 				$checkuser->execute(array($username,$password));
 				$row = $checkuser->fetch(PDO::FETCH_ASSOC);
 				if(isset($row['username'])){
-					$_SESSION['name'] =  $username;
-					$_SESSION['pwd'] = $password;
-					header('Location: role.php');
-					exit;
+						$_SESSION['name'] =  $username;
+						$query = "SELECT * FROM ".$db_table[1]." where ".$table2_structure[3]." = ?";
+						$checkrole = $db->prepare($query);
+						//"SELECT * FROM role where username = username";
+						$checkrole->execute(array($_SESSION['name']));
+						$row = $checkrole->fetch(PDO::FETCH_ASSOC);
+
+						if(isset($row['username'])){
+								header('Location: main.php');
+						}else{
+								header('Location: role.php');
+						}
+						exit; //prevents further page loading
 					$error = -2;
 				}else{
 					$error = 3;
