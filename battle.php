@@ -4,7 +4,7 @@ ob_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include("db/db_config.php");
-include('php/battle_load.php');
+include('php/map_load.php');
 $hp = 100;
 $atk = 4;
 ?>
