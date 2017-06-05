@@ -7,7 +7,7 @@ include("db/db_config.php");
 if(isset($_SESSION['name'])){
     include("php/map_load.php");
 }else{
-  header('Location: login.php');
+    header('Location: login.php');
   exit;
 }
 //check login time set x,y
@@ -26,6 +26,7 @@ if(isset($_SESSION['name'])){
     <title>Role</title>
   </head>
   <body>
+      <p><?php print_r( $mon_data );?></p>
       <p><?php print_r( $map_data );?></p>
       <p><?php print_r( $role_data );?></p>
       <?php include('layout/main_button.php'); ?>

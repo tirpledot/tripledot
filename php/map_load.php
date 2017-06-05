@@ -27,34 +27,7 @@
       $stmt -> execute(array($_SESSION['x'],$_SESSION['y'],$_SESSION['name']));
       header('Location: main.php');
     }
-
-    //battle result
-    if(isset($_POST['win'])){ // result win , add exp
-          //mon data get mon exp
-          $sql = "select *from monster where x = ? , y = ?";
-          $stmt = $db -> prepare($sql);
-          $stmt -> execute(array($_SESSION['x'],$_SESSION['y']));
-          $mon_data = $stmt->fetch(PDO::FETCH_ASSOC);
-
-          //role data get cur exp
-          $sql = "select * from role where username = ?";
-          $stmt = $db-> prepare($sql);
-          $stmt -> execute(array($_SESSION['name']));
-          $role_data = $stmt->fetch(PDO::FETCH_ASSOC);
-          //add exp
-          $new_exp = $mon_data['ep']+$role_data['ep'];
-          //check lv up
-          $sql = "select * from exp where ep < ?";
-          $stmt = $db -> prepare($sql);
-          $stmt -> execute(array($new_exp));
-          $exp_data = $stmt->fetch(PDO::FETCH_ASSOC);
-          //update new exp,lv
-          $sql = "UPDATE role SET lv = ?,ep = ? where username = ?";;
-          $stmt = $db -> prepare($sql);
-          $stmt -> execute(array($exp_data['lv'],$new_exp,$_SESSION['name']));
-
-    }
-
+    // all table data
     $sql = "select * from role where username = ?";
     $stmt = $db-> prepare($sql);
     $stmt -> execute(array($_SESSION['name']));
@@ -74,4 +47,29 @@
 
     $_SESSION['x'] = $role_data['x'];
     $_SESSION['y'] = $role_data['y'];
+
+    //battle result
+    if(isset($_POST['win'])){ // result win , add exp
+          //add exp
+          $new_exp = $mon_data['ep']+$role_data['ep'];
+          //check lv up
+          $sql = "select * from exp where ep > ? LIMIT 1";
+          $stmt = $db -> prepare($sql);
+          $stmt -> execute(array($new_exp));
+          $exp_data = $stmt->fetch(PDO::FETCH_ASSOC);
+          if($role_data['lv']<$exp_data['lv']){
+              //level up
+              $sql = "UPDATE role SET lv = ?,ep = ?,hp = ?,mp = ?,atk = ? where username = ?";;
+              $stmt = $db -> prepare($sql);
+              $stmt -> execute(array($exp_data['lv'],$new_exp,$role_data['hp']+rand(25,50),$role_data['mp']+rand(5,10),$role_data['atk']+rand(2,7),$_SESSION['name']));
+
+          }else{
+              //update new exp
+              $sql = "UPDATE role SET ep = ? where username = ?";;
+              $stmt = $db -> prepare($sql);
+              $stmt -> execute(array($new_exp,$_SESSION['name']));
+          }
+
+          header('Location: login.php');
+    }
 ?>

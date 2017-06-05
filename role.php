@@ -28,9 +28,9 @@
           header('Location: main.php');
           exit;
         }else if(isset($_POST['checkbtn'])){
-            include('layout/role.check.php');
+            include('layout/role_check.php');
         }else{
-            include('layout/role.table.php');
+            include('layout/role_table.php');
         }
 
     ?>
