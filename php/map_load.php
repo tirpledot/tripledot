@@ -18,6 +18,9 @@
         $_SESSION['y'] = 0;
     }else if(isset($_POST['battle'])){
         header('Location: battle.php');
+    }else if(isset($_POST['logout'])){
+        session_unset();
+        header('Location: login.php');
     }
     if(isset($sql)){
       $stmt = $db-> prepare($sql);
@@ -56,10 +59,19 @@
     $stmt = $db-> prepare($sql);
     $stmt -> execute(array($_SESSION['name']));
     $role_data = $stmt->fetch(PDO::FETCH_ASSOC);
-    $_SESSION['x'] = $role_data['x'];
-    $_SESSION['y'] = $role_data['y'];
+
+
+
     $sql = "select * from map where x = ? and y = ?";
     $stmt = $db -> prepare($sql);
     $stmt -> execute(array($role_data['x'],$role_data['y']));
     $map_data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $sql = "Select * from monster where x = ? and y = ?";
+    $stmt = $db->prepare($sql);
+    $stmt -> execute(array($role_data['x'],$role_data['y']));
+    $mon_data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $_SESSION['x'] = $role_data['x'];
+    $_SESSION['y'] = $role_data['y'];
 ?>
