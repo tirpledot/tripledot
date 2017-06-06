@@ -61,6 +61,8 @@
     }*/
     //battle result
     if(isset($_POST['win'])){ // result win , add exp
+          //add log
+          array_push($_SESSION['battle'] ,"[ ".date("h:i:s")." ]"." 你花了 ".$_POST['round']." 回合內擊敗了".$mon_data['name']."。");
           //add exp
           $new_exp = $mon_data['ep']+$role_data['ep'];
           //check lv up
@@ -68,19 +70,20 @@
           $stmt = $db -> prepare($sql);
           $stmt -> execute(array($new_exp));
           $exp_data = $stmt->fetch(PDO::FETCH_ASSOC);
+
           if($role_data['lv']<$exp_data['lv']){
               //level up
               $sql = "UPDATE role SET lv = ?,ep = ?,hp = ?,mp = ?,atk = ? where username = ?";
               $stmt = $db -> prepare($sql);
               $stmt -> execute(array($exp_data['lv'],$new_exp,$role_data['hp']+rand(25,50),$role_data['mp']+rand(5,10),$role_data['atk']+rand(2,7),$_SESSION['name']));
-
+              array_push($_SESSION['battle'] ,"[ ".date("h:i:s")." ]"." 恭喜你升到了等級 ".$exp_data['lv']." 。");
           }else{
               //update new exp
               $sql = "UPDATE role SET ep = ? where username = ?";;
               $stmt = $db -> prepare($sql);
               $stmt -> execute(array($new_exp,$_SESSION['name']));
           }
-          array_push($_SESSION['battle'] ,"[ ".date("h:i:s")." ]"." 你花了 ".$_POST['round']." 回合內擊敗了".$mon_data['name']."。");
+
           header('Location: main.php');
     }else if(isset($_POST['lose'])){
           array_push($_SESSION['battle'] , "[ ".date("h:i:s")." ]"." 你在第 ".$_POST['round']." 回合被".$mon_data['name']."擊敗了。");

@@ -1,4 +1,4 @@
-$(window).load(function() {
+$(document).ready(function() {
     $('#battle_log').scrollTop($('#battle_log')[0].scrollHeight);
 });
 function damage(){
