@@ -59,9 +59,17 @@
 				$row = $checkuser->fetch(PDO::FETCH_ASSOC);
 				if(isset($row['username'])){
 					$error = 1;
+					echo
+					"<div class = \"message row\">
+						<p style=\"color:red;\">帳號已被註冊</p>
+					</div>";
 				}else{
 					if($_POST['Password2']!=$_POST['Password1']){
-						$error = 2;
+							$error = 2;
+							echo
+							"<div class = \"message row\">
+								<p style=\"color:red;\">密碼確認錯誤</p>
+								</div>";
 					}else{
 					//Insert new Account
 						$sql = "INSERT INTO ".$db_table[0]." (".$table1_structure[0].",".$table1_structure[1].",".$table1_structure[2].") VALUES(?,?,NOW())";
@@ -70,6 +78,10 @@
 						$sth->execute(array($username,$password));
 						$_POST = array();
 						$error = -1;
+						echo
+						"<div class = \"message row\">
+							<p style=\"color:red;\">帳號註冊成功</p>
+						</div>";
 					}
 				}
 			}elseif(isset($_POST['loginbtn'])){
@@ -96,33 +108,15 @@
 								header('Location: role.php');
 						}
 						exit; //prevents further page loading
-					$error = -2;
+						$error = -2;
 				}else{
-					$error = 3;
+						$error = 3;
+						echo
+					"<div class = \"message row\">
+						<p style=\"color:red;\">帳號或密碼錯誤</p>
+					</div>";
 				}
 			}
-	?>
-	<?php if($error == 1 ){
-		echo
-		"<div class = \"message row\">
-			<p style=\"color:red;\">帳號已被註冊</p>
-		</div>";
-		}elseif($error == 2){
-			echo
-		"<div class = \"message row\">
-			<p style=\"color:red;\">密碼確認錯誤</p>
-		</div>";
-		}elseif($error == 3){
-			echo
-		"<div class = \"message row\">
-			<p style=\"color:red;\">帳號或密碼錯誤</p>
-		</div>";
-		}elseif($error == -1){
-		echo
-		"<div class = \"message row\">
-			<p style=\"color:red;\">帳號註冊成功</p>
-		</div>";
-		}
 	?>
 	<div class ="main row">
 		<ul class="nav nav-tabs" role="tablist">
@@ -167,6 +161,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/app.js"></script>
-	<?php if($error == 1){echo "<script type=\"text/javascript\">$('#register').show();$('#login').hide();</script>";}?>
+
   </body>
 </html>

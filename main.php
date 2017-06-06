@@ -30,6 +30,7 @@ if(isset($_SESSION['name'])){
       <hr style="height:0.1%;" color="c7c6c6">
       <div class="mid_area" style="height:45%;">
           <h2 class="text-center">[ <?php echo $map_data['locate']; ?> ]</h2>
+          <?php include('layout/battle_log.php'); ?>
       </div>
       <hr style="height:0.1%;" color="c7c6c6">
       <?php include('layout/chara_user.php');?>

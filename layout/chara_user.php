@@ -21,7 +21,7 @@
 				<div class = "col-xs-11">
 					<div class="row u_info">
 						<div class="col-xs-2"><span>名稱<?php echo " :\t",$role_data['username']; ?></span></div>
-						<div class="col-xs-2"><span>血量<?php echo " :\t",$role_data['hp']; ?></span></div>
+						<div class="col-xs-2"><span id="role_hp">血量<?php echo " :\t",$role_data['hp']; ?></span></div>
 						<div class="col-xs-2" ><span>魔力<?php echo " :\t",$role_data['mp']; ?></span></div>
 						<div class="col-xs-2" ><span>攻擊力<?php echo " :\t",$role_data['atk']; ?></span></div>
 					</div>
