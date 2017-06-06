@@ -62,7 +62,7 @@
     //battle result
     if(isset($_POST['win'])){ // result win , add exp
           //add log
-          array_push($_SESSION['battle'] ,"[ ".date("h:i:s")." ]"." 你花了 ".$_POST['round']." 回合內擊敗了".$mon_data['name']."。");
+          array_push($_SESSION['battle'] ,"[ ".date("h:i:s")." ]"." 你花了 ".$_POST['round']." 回合擊敗了 ".$mon_data['name']." 。");
           //add exp
           $new_exp = $mon_data['ep']+$role_data['ep'];
           //check lv up
@@ -86,7 +86,7 @@
 
           header('Location: main.php');
     }else if(isset($_POST['lose'])){
-          array_push($_SESSION['battle'] , "[ ".date("h:i:s")." ]"." 你在第 ".$_POST['round']." 回合被".$mon_data['name']."擊敗了。");
+          array_push($_SESSION['battle'] , "[ ".date("h:i:s")." ]"." 你在第 ".$_POST['round']." 回合被 ".$mon_data['name']." 擊敗了。");
           header('Location: main.php');
     }
 ?>
