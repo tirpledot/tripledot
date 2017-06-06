@@ -45,6 +45,11 @@
     $stmt -> execute(array($role_data['x'],$role_data['y']));
     $mon_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    $sql = "select * from exp where lv = ?";
+    $stmt = $db -> prepare($sql);
+    $stmt -> execute(array($role_data['lv']));
+    $exp_data = $stmt->fetch(PDO::FETCH_ASSOC);
+
     $_SESSION['x'] = $role_data['x'];
     $_SESSION['y'] = $role_data['y'];
 

@@ -26,9 +26,13 @@ if(isset($_SESSION['name'])){
     <title>Role</title>
   </head>
   <body>
-      <p><?php print_r( $mon_data );?></p>
-      <p><?php print_r( $map_data );?></p>
-      <p><?php print_r( $role_data );?></p>
+      <?php include('layout/mon_info.php');?>
+      <hr style="height:0.1%;" color="c7c6c6">
+      <div class="mid_area" style="height:45%;">
+          <h2 class="text-center">[ <?php echo $map_data['locate']; ?> ]</h2>
+      </div>
+      <hr style="height:0.1%;" color="c7c6c6">
+      <?php include('layout/chara_user.php');?>
       <?php include('layout/main_button.php'); ?>
   </body>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

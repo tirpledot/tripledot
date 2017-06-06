@@ -19,12 +19,16 @@ include('php/map_load.php');
     <title>Battle</title>
   </head>
   <body>
-      <h4 id = "mon_info"<?php echo "mon = ".$mon_data['name']." hp = ".$mon_data['hp']." atk = ".$mon_data['atk'];?>><?php echo "name : ",$mon_data['name']," , mon_hp = ",$mon_data['hp']," , mon_atk = ",$mon_data['atk'];?></h4>
-      <div name="battle_info" id="battle_info"  style="height:20em;width:100%; overflow-x:hidden;overflow-y:auto">
-        <h4 class="text-center">戰鬥開始</h4>
+      <?php include('layout/mon_info.php');?>
+      <h4 id = "mon_info"<?php echo "mon = ".$mon_data['name']." hp = ".$mon_data['hp']." atk = ".$mon_data['atk'];?>></h4>
+      <div class="mid_area" style="height:45%;">
+        <div name="battle_info" id="battle_info"  style="height:90%;width:100%; overflow-x:hidden;overflow-y:auto">
+          <h4 class="text-center">戰鬥開始</h4>
+        </div>
+        <button type="button" class="btn btn-default" style="margin-left:12%;width:8%;"  name="attack" id="attack" onclick="damage(<?php echo $role_data['hp'].",".$role_data['atk'];?>)">attack</button>
       </div>
-      <button type="button" name="attack" id="attack" onclick="damage(<?php echo $role_data['hp'].",".$role_data['atk'];?>)">attack</button>
-      <h4 id = "role_info"<?php echo "hp = ".$role_data['hp']." atk = ".$role_data['atk'];?>><?php echo "hp = ",$role_data['hp']," , atk = ",$role_data['atk'];?></h4>
+      <?php include('layout/chara_user.php');?>
+      <h4 id = "role_info"<?php echo "hp = ".$role_data['hp']." atk = ".$role_data['atk'];?>></h4>
   </body>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

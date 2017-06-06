@@ -16,9 +16,7 @@ function damage(){
     var cur_mhp = mon_hp-atk;
     var cur_rhp = hp-mon_atk;
     $('#mon_info').attr({'hp': cur_mhp});
-    $('#mon_info').text('name : '+mon+' , mon_hp = '+cur_mhp+' , mon_atk = 2');
     $('#role_info').attr({'hp': cur_rhp});
-    $('#role_info').text('hp =' +cur_rhp+  ', atk =' +atk);
     $('#battle_info').append(battle_info,battle_info2);
     if(cur_mhp <= 0){
         var battle_info = $('<h5/>',{
@@ -34,6 +32,8 @@ function damage(){
         $('<button/>',{
           type : 'submit',
           text : '按這裡繼續遊戲',
+          class : 'btn btn-default',
+          style :'margin-left: 12%;width:8%;',
           name : 'win'
         }).appendTo(result);
     }
@@ -52,6 +52,8 @@ function damage(){
         $('<button/>',{
           type : 'submit',
           text : '按這裡繼續遊戲',
+          class : 'btn btn-default',
+          style :'margin-left: 12%;width:8%;',
           name : 'win'
         }).appendTo(result);
 
