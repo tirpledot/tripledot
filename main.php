@@ -25,7 +25,7 @@ if(isset($_SESSION['name'])){
 
     <title>Role</title>
   </head>
-  <body>
+  <body style="background-image:url('img/background/<?php echo $map_data['background'];?>');background-size: 100% 100%;">
       <?php include('layout/mon_info.php');?>
       <hr style="height:0.1%;" color="c7c6c6">
       <div class="mid_area" style="height:45%;">

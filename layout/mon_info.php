@@ -13,7 +13,7 @@
 			padding:0.5%;
 		}
 </style>
-<div class="mon_info">
+<div class="mon_info" style="background-image:url('img/background/userboard.jpg');">
 		<div class="row mon_contain">
 				<div class="col-xs-1">
 					<img src="img/mon/<?php if(isset( $mon_data['source'])){echo $mon_data['source'];}else{ echo "none.png";}?>" style="width:75px;height:75px">

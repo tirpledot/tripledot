@@ -18,12 +18,12 @@ include('php/map_load.php');
     <meta charset="utf-8">
     <title>Battle</title>
   </head>
-  <body>
+  <body style= "background-image: url('img/background/<?php echo $map_data['background'];?>'); 	background-size: 100% 100%;">
       <?php include('layout/mon_info.php');?>
       <h4 id = "mon_info"<?php echo "mon = ".$mon_data['name']." hp = ".$mon_data['hp']." atk = ".$mon_data['atk'];?>></h4>
       <hr style="height:0.1%;" color="c7c6c6">
       <div class="mid_area" style="height:45%;">
-        <div name="battle_info" id="battle_info"  style="height:90%;width:100%; overflow-x:hidden;overflow-y:auto">
+        <div name="battle_info" id="battle_info"  style="height:90%;width:100%; overflow-x:hidden;overflow-y:auto;">
           <h4 class="text-center">戰鬥開始</h4>
         </div>
         <button type="button" class="btn btn-default col-xs-1" style="margin-left:12%;width:8%;"  name="attack" id="attack" onclick="damage(<?php echo $role_data['hp'].",".$role_data['atk'];?>)">普通攻擊</button>
