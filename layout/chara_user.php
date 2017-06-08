@@ -20,15 +20,19 @@
 				</div>
 				<div class = "col-xs-11">
 					<div class="row u_info">
-						<div class="col-xs-2"><span>名稱<?php echo " :\t",$role_data['username']; ?></span></div>
-						<div class="col-xs-2"><span id="role_hp">血量<?php echo " :\t",$role_data['hp']; ?></span></div>
-						<div class="col-xs-2" ><span>魔力<?php echo " :\t",$role_data['mp']; ?></span></div>
-						<div class="col-xs-2" ><span>攻擊力<?php echo " :\t",$role_data['atk']; ?></span></div>
+						<div class="col-xs-2"><span>名稱 : <?php echo $role_data['username']; ?></span></div>
+						<div class="col-xs-2"><span >血量 : <span id="role_hp"><?php echo $role_data['hp']; ?></span>/<span id="role_maxhp"><?php echo $role_data['maxhp']; ?></span></span></div>
+						<div class="col-xs-2" ><span>魔力 : <span id="role_mp"><?php echo $role_data['mp']; ?></span></span></div>
+						<div class="col-xs-2" ><span>攻擊力 : <span id="role_atk"><?php echo $role_data['atk']; ?></span></span></div>
 					</div>
 					<div class="row u_info">
-							<div class="col-xs-2"><span>等級<?php echo " :\t",$role_data['lv']; ?></span></div>
-							<div class="col-xs-2"><span>經驗值<?php echo " :\t",$role_data['ep'],"/",$exp_data['ep']; ?></span></div>
-							<div class="col-xs-2"><span>職業<?php echo " :\t",$role_data['role']; ?></span></div>
+							<div class="col-xs-2"><span>等級 : <span id="role_lv"><?php echo $role_data['lv']; ?></span></span></div>
+							<div class="col-xs-2"><span>職業 : <?php echo $role_data['role']; ?></span></div>
+							<div class="col-xs-2"><span>金幣 : <span id="role_gold"><?php echo $role_data['gold']; ?></span></span></div>
+							<div class="col-xs-3"><span>經驗值 :
+								<span id="role_ep"><?php echo $role_data['ep']; ?></span>/<span id="role_maxep" data-nep="<?php echo $exp_data[1]['ep'];?>"><?php echo $exp_data[0]['ep']; ?></span>
+							</span></div>
+
 					</div>
 				</div>
 		</div>

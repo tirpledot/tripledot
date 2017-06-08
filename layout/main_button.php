@@ -25,7 +25,11 @@
       <div = "row">
           <div class="col-xs-2"><button class="btn btn-default" type="submit" name="west" <?php if($map_data['toW'] == '0')echo "disabled"; ?>>西</button></div>
           <div class="col-xs-2"><button class="btn btn-default" type="submit" name="south" <?php if($map_data['toS'] == '0')echo "disabled"; ?>>南</button></div>
-          <div class="col-xs-2"><button class="btn btn-default" type="submit" name="return">回城</button></div>
+          <div class="col-xs-2">
+            <button class="btn btn-default" type="submit" name="<?php if($map_data['class'] != 'heal'){ echo "return";}else{echo "heal";}?>">
+              <?php if($map_data['class'] != 'heal'){ echo "回城";}else{echo "治癒";}?>
+            </button>
+          </div>
           <div class="col-xs-2 col-xs-offset-4"><button class="btn btn-default" type="submit" name="logout">登出</button></div>
       </div>
     </form>

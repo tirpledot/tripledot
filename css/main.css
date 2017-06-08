@@ -1,5 +1,16 @@
-html,body{
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
+
+@media (max-width:1280px) {
+  html,body{
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    width:1280px;
+  }
+} //nothing with screen size bigger than 960px
+@media (min-width:1280px) {
+  html,body{
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+} //nothing with screen size smaller than 960px

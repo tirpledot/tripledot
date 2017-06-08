@@ -20,14 +20,15 @@
 				</div>
 				<div class = "col-xs-11">
 					<div class="row u_info">
-						<div class="col-xs-2"><span>名稱<?php echo " :\t",$mon_data['name']; ?></span></div>
-						<div class="col-xs-2"><span id="mon_hp">血量<?php echo " :\t",$mon_data['hp']; ?></span></div>
-						<div class="col-xs-2" ><span>魔力<?php echo " :\t",$mon_data['mp']; ?></span></div>
-						<div class="col-xs-2" ><span>攻擊力<?php echo " :\t",$mon_data['atk']; ?></span></div>
+						<div class="col-xs-2"><span>名稱 :<?php echo $mon_data['name']; ?></span></div>
+						<div class="col-xs-2"><span>血量 :<span id="mon_hp" ><?php echo $mon_data['hp']; ?></span></span></div>
+						<div class="col-xs-2" ><span>魔力 :<?php echo $mon_data['mp']; ?></span></div>
+						<div class="col-xs-2" ><span>攻擊力 :<?php echo $mon_data['atk']; ?></span></div>
 					</div>
 					<div class="row u_info">
-							<div class="col-xs-2"><span>等級<?php echo " :\t",$mon_data['lv']; ?></span></div>
-							<div class="col-xs-2"><span>經驗值<?php echo " :\t",$mon_data['ep']; ?></span></div>
+							<div class="col-xs-2"><span>等級 :<?php echo $mon_data['lv']; ?></span></div>
+							<div class="col-xs-2"><span>經驗值 :<span id="mon_ep" ><?php echo $mon_data['ep']; ?></span></span></div>
+							<div class="col-xs-2"><span>金幣 :<span id="mon_gold" ><?php echo $mon_data['gold']; ?></span></span></div>
 					</div>
 				</div>
 

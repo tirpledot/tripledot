@@ -17,7 +17,7 @@
             <h4><?php echo $_POST['role']; ?><h4>
         </div>
       <div class="form-group sub">
-        <button type="submit" name="comfirmbtn" id="checkbtn">確定</button>
+        <button type="submit" name="comfirmbtn" id="checkbtn" style="margin-right:10px">確定</button>
         <button type="submit" name="resetbtn" id="resetbtn">重設</button>
       </div>
       </form>
