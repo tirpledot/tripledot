@@ -20,7 +20,7 @@
           <div class="col-xs-2"><button class="btn btn-default" type="submit" name="north" <?php if($map_data['toN'] == '0')echo "disabled"; ?>>北</button></div>
 
 
-          <div class="col-xs-8"><button class="btn btn-default" type="submit" name="battle" <?php if($map_data['class'] == 'none')echo "disabled"; ?>>戰鬥</button></div>
+          <div class="col-xs-8"><button class="btn btn-default" type="submit" name="battle" <?php if($map_data['class'] == 'none' || $role_data['hp'] <= 0)echo "disabled"; ?>>戰鬥</button></div>
       </div>
       <div = "row">
           <div class="col-xs-2"><button class="btn btn-default" type="submit" name="west" <?php if($map_data['toW'] == '0')echo "disabled"; ?>>西</button></div>
