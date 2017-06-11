@@ -143,9 +143,7 @@ function countf(who,from,to){
 }
 function checkskill(){
   $('.skill').each(function(i, obj) {
-        console.log(parseInt($(this).data('cost')),parseInt($('#role_info').data('mp')) );
         if(parseInt($('#role_info').data('mp')) < parseInt($(this).data('cost'))*(-1)){
-            console.log("123");
             $(this).prop('disabled',true);
         }else{
             if(parseInt($(this).data('lvon')) == 1){

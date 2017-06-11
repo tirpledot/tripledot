@@ -42,14 +42,15 @@ include('php/map_load.php');
         </div>
         <div style="margin-left:10%;width:80%">
 
-            <button type="button" class="btn btn-default col-xs-1" style="width:10em;" name="recmp" id="recmp" onclick="damage(0,0);" >冥想</button>
-            <button type="button" class="btn btn-default col-xs-1" style="width:10em;"  name="attack" id="attack" onclick="damage(1,0);">普通攻擊</button>
+            <button type="button" class="btn btn-default col-xs-1" style="width:10em;"  data-toggle="tooltip" data-placement="top" title="恢復 20 點魔力"  name="recmp" id="recmp" onclick="damage(0,0);" >冥想</button>
+            <button type="button" class="btn btn-default col-xs-1" style="width:10em;"   data-toggle="tooltip" data-placement="top" title="1 倍攻擊力 0 消耗魔力" name="attack" id="attack" onclick="damage(1,0);">普通攻擊</button>
             <?php
             for ($i = 0; $i < 3 ; $i++){?>
                     <button type="button"
                     class="btn btn-default col-xs-1 skill"
                     data-cost = "<?php echo $skill_data[$i]['mp'];?>"
                     data-lvon = "<?php if($role_data['lv'] < $skill_data[$i]['lv']){ echo "0";}else{echo "1";}?>"
+                    data-toggle="tooltip" data-placement="top" title="<?php echo $skill_data[$i]['effect']," 倍攻擊力\n消耗 ",(-1)*$skill_data[$i]['mp']," 點魔力";?>"
                     style="width:10em;"
                     onclick="damage(<?php echo $skill_data[$i]['effect'],",",$skill_data[$i]['mp'];?>);"
                     <?php if($role_data['lv'] < $skill_data[$i]['lv']){echo "disabled";}?>
