@@ -20,9 +20,9 @@
 				</div>
 				<div class = "col-xs-11">
 					<div class="row u_info">
-						<div class="col-xs-2"><span>名稱 : <?php echo $role_data['username']; ?></span></div>
+						<div class="col-xs-2"><span>名稱 : <?php echo $role_data['nickname']; ?></span></div>
 						<div class="col-xs-2"><span >血量 : <span id="role_hp"><?php echo $role_data['hp']; ?></span>/<span id="role_maxhp"><?php echo $role_data['maxhp']; ?></span></span></div>
-						<div class="col-xs-2" ><span>魔力 : <span id="role_mp"><?php echo $role_data['mp']; ?></span></span></div>
+						<div class="col-xs-2" ><span>魔力 : <span id="role_mp"><?php echo $role_data['mp']; ?></span>/<span id="role_maxmp"><?php echo $role_data['maxmp']; ?></span></span></div>
 						<div class="col-xs-2" ><span>攻擊力 : <span id="role_atk"><?php echo $role_data['atk']; ?></span></span></div>
 					</div>
 					<div class="row u_info">

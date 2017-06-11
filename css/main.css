@@ -14,3 +14,19 @@
     width: 100%;
   }
 } //nothing with screen size smaller than 960px
+@keyframes fadeIn {
+    from { opacity: 0; }
+}
+img.levelup {
+    animation: fadeIn 1s infinite alternate;
+}
+
+.tooltip-wrapper .btn[disabled] {
+  /* don't let button block mouse events from reaching wrapper */
+  pointer-events: none;
+}
+
+.tooltip-wrapper.disabled {
+  /* OPTIONAL pointer-events setting above blocks cursor setting, so set it here */
+  cursor: not-allowed;
+}

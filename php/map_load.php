@@ -30,9 +30,9 @@
         $stmt -> execute(array($role_data['maxhp'],$role_data['maxmp'],$_SESSION['name']));
         header('Location: main.php');
     }else if(isset($_POST['escape'])){
-        $rsql = "UPDATE role SET hp = ? where username = ?";
+        $rsql = "UPDATE role SET hp = ?,mp = ? where username = ?";
         $stmt = $db -> prepare($rsql);
-        $stmt -> execute(array($_POST['leavehp'],$_SESSION['name']));
+        $stmt -> execute(array($_POST['leavehp'],$_POST['leavemp'],$_SESSION['name']));
         header('Location: main.php');
     }else if(isset($_POST['battle'])){
         header('Location: battle.php');
@@ -50,6 +50,11 @@
     $stmt = $db-> prepare($sql);
     $stmt -> execute(array($_SESSION['name']));
     $role_data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $sql = "select * from skill where role = ?";
+    $stmt = $db-> prepare($sql);
+    $stmt -> execute(array($role_data['role']));
+    $skill_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $sql = "select * from map where x = ? and y = ?";
     $stmt = $db -> prepare($sql);
@@ -92,8 +97,8 @@
               $stmt = $db -> prepare($sql);
               $stmt -> execute(array( $exp_data['lv'],
                                       $new_exp,
-                                      $role_data['hp']+ 100,
-                                      $role_data['hp']+ 100,
+                                      $role_data['maxhp']+ 100,
+                                      $role_data['maxhp']+ 100,
                                       $role_data['maxmp']+ 10,
                                       $role_data['maxmp']+ 10,
                                       $_POST['gold'],
@@ -102,9 +107,9 @@
               array_push($_SESSION['battle'] ,"[ ".date("h:i:s")." ]"." 恭喜你升到了等級 ".$exp_data['lv']." 。");
           }else{
               //update new exp
-              $sql = "UPDATE role SET hp = ?,ep = ?,gold = ? where username = ?";;
+              $sql = "UPDATE role SET hp = ?,mp = ?,ep = ?,gold = ? where username = ?";;
               $stmt = $db -> prepare($sql);
-              $stmt -> execute(array($_POST['leavehp'],$new_exp,$_POST['gold'],$_SESSION['name']));
+              $stmt -> execute(array($_POST['leavehp'],$_POST['leavemp'],$new_exp,$_POST['gold'],$_SESSION['name']));
           }
 
           header('Location: main.php');
@@ -112,7 +117,7 @@
           array_push($_SESSION['battle'] , "[ ".date("h:i:s")." ]"." 你在第 ".$_POST['round']." 回合被 ".$mon_data['name']." 擊敗了。");
           $sql = "UPDATE role SET hp = ? where username = ?";;
           $stmt = $db -> prepare($sql);
-          $stmt -> execute(array($_POST['leavehp'],$_SESSION['name']));
+          $stmt -> execute(array($_POST['leavehp'],$_POST['leavemp'],$_SESSION['name']));
           header('Location: main.php');
     }
 ?>

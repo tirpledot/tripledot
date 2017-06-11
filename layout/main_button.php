@@ -12,14 +12,11 @@
       justify-content:flex-end;
     }
 </style>
-<footer>
   <div class="btn_surface">
     <form class="btn_form" action="main.php" method="post">
       <div>
           <div class="col-xs-2"><button class="btn btn-default" type="submit" name="east" <?php if($map_data['toE'] == '0')echo "disabled"; ?>>東</button></div>
           <div class="col-xs-2"><button class="btn btn-default" type="submit" name="north" <?php if($map_data['toN'] == '0')echo "disabled"; ?>>北</button></div>
-
-
           <div class="col-xs-8"><button class="btn btn-default" type="submit" name="battle" <?php if($map_data['class'] == 'none' || $role_data['hp'] <= 0)echo "disabled"; ?>>戰鬥</button></div>
       </div>
       <div = "row">
@@ -35,5 +32,3 @@
     </form>
 
   </div>
-
-</footer>
