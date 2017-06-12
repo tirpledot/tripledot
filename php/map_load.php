@@ -129,7 +129,7 @@
           header('Location: main.php');
     }else if(isset($_POST['lose'])){
           array_push($_SESSION['battle'] , "[ ".date("h:i:s")." ]"." 你在第 ".$_POST['round']." 回合被 ".$mon_data['name']." 擊敗了。");
-          $sql = "UPDATE role SET hp = ? where username = ?";;
+          $sql = "UPDATE role SET hp = ?,mp = ? where username = ?";;
           $stmt = $db -> prepare($sql);
           $stmt -> execute(array($_POST['leavehp'],$_POST['leavemp'],$_SESSION['name']));
           header('Location: main.php');
