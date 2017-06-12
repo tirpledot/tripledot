@@ -74,7 +74,7 @@ $weapon_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="user_info" style="background-image:url('img/background/userboard.jpg');">
     		<div class="row contain" style="">
     				<div class="col-xs-1">
-    					<img src="img/role/head.jpeg" style="width:75px;height:75px">
+    					<img src="img/role/head.jpg" style="width:75px;height:75px">
     				</div>
     				<div class = "col-xs-11">
     					<div class="row u_info">
