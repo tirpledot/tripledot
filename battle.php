@@ -70,7 +70,7 @@ include('php/equip_load.php');
 
         </div>
         <form id="result" name="result" action="main.php" method="post">
-            <input type="hidden" name="round" id="round" value="1">
+            <input type="hidden" name="round" id="round" value="0">
             <input type="hidden" name="leavehp" id="leavehp" value="<?php echo $role_data['hp'];?>">
             <input type="hidden" name="leavemp" id="leavemp" value="<?php echo $role_data['mp'];?>">
             <input type="hidden" name="gold" value="<?php echo $mon_data['gold']+$role_data['gold'];?>">
@@ -87,7 +87,7 @@ include('php/equip_load.php');
             data-mp="<?php echo $role_data['mp'];?>"
             data-atk = "<?php echo $role_data['atk'];?>"
             data-def = "<?php echo $role_data['def'];?>"
-            
+
       >
   </body>
 
