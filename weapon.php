@@ -68,7 +68,7 @@ $weapon_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
           background-size: 100% 100%;
         }
     </style>
-    <title>武器店</title>
+    <title>Tripledot</title>
   </head>
   <body  data-role="page">
     <div class="user_info" style="background-image:url('img/background/userboard.jpg');">

@@ -30,7 +30,7 @@ include('php/equip_load.php');
               });
           </script>
 
-    <title>Battle</title>
+    <title>Tripledot</title>
 
   </head>
   <body style= "background-image: url('img/background/<?php echo $map_data['background'];?>'); 	background-size: 100% 100%;">

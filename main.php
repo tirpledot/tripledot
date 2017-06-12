@@ -30,7 +30,7 @@ if(isset($_SESSION['name'])){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/main.css">
 
-    <title>Role</title>
+    <title>Tripledot</title>
   </head>
   <body  data-role="page" style="background-image:url('img/background/<?php echo $map_data['background'];?>');background-size: 100% 100%;">
       <?php include('layout/mon_info.php');?>
