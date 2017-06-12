@@ -16,6 +16,8 @@ $weapon_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="icon" href="img/map.ico">
+
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

@@ -10,6 +10,8 @@
 <html>
   <head>
     <meta charset="utf-8">
+		<link rel="icon" href="img/map.ico">
+
     <!-- reCAPTCHA -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <!-- Bootstrap -->
