@@ -15,7 +15,7 @@
         <div class="form-group">
             <label for="role">職業</label>
             <select class="form-control" id="role" name = "role">
-                <option value="測試者">測試者</option>
+                <option value="劍客">劍客</option>
             </select>
         </div>
       <div class="form-group sub">
