@@ -25,6 +25,9 @@
           $insertrole = $db->prepare($query);
           //"SELECT * FROM role where username = username";
           $insertrole->execute(array($_POST['nickname'],$_POST['sex'],$_POST['role'],$_SESSION['name']));
+					$query = "INSERT INTO equip (username) VALUES(?)";
+					$insertequip = $db->prepare($query);
+					$insertequip->execute(array($_SESSION['name']));
           header('Location: main.php');
           exit;
         }else if(isset($_POST['checkbtn'])){

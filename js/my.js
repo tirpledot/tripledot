@@ -9,19 +9,23 @@ function damage(effect,cost){
         mon = monD.data('name'),
         mon_hp = monD.data('hp'),
         mon_atk = monD.data('atk'),
+        mon_def = monD.data('def'),
         roleD = $('#role_info'),
         hp = roleD.data('hp'),
         mp = roleD.data('mp'),
+        def = roleD.data('def'),
         atk = roleD.data('atk')*effect,
         round = roleD.data('round')+1;
-    var cur_mhp = mon_hp-atk;
+    var role_point = (Math.floor((Math.random() * atk * 0.2) + atk * 0.8) - Math.floor((Math.random() * def * 0.2) + def * 0.6));
+    var mon_point = (Math.floor((Math.random() * mon_atk * 0.2) + mon_atk * 0.8) - Math.floor((Math.random() * mon_def * 0.2) + mon_def * 0.6));
+    var cur_mhp = mon_hp - role_point;
     //first attack is user
-    var cur_rhp = hp-mon_atk;
+    var cur_rhp = hp - mon_point;
     var cur_rmp = mp + cost;
     if(effect != 0){
       var battle_info = $('<h5/>',{
         class:'text-center',
-        text :'對'+mon+'造成 '+atk+' 點傷害'
+        text :'對'+ mon +'造成 '+ role_point +' 點傷害'
       }).appendTo('#battle_info');
       countf($('#mon_hp'),mon_hp,cur_mhp);
       countf($('#role_mp'),mp,cur_rmp);
@@ -76,7 +80,7 @@ function damage(effect,cost){
         // if win not get mon attack
         var battle_info2 = $('<h5/>',{
           class:'text-center',
-          text :'你受到 '+mon_atk+' 點傷害'
+          text :'你受到 '+mon_point+' 點傷害'
         }).appendTo('#battle_info');
         //$('#role_hp').text("血量 :\t"+cur_rhp);
         roleD.data('hp',cur_rhp);

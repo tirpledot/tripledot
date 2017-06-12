@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include("db/db_config.php");
 include('php/map_load.php');
+include('php/equip_load.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,13 +35,18 @@ include('php/map_load.php');
   <body style= "background-image: url('img/background/<?php echo $map_data['background'];?>'); 	background-size: 100% 100%;">
 
       <?php include('layout/mon_info.php');?>
-      <input type="hidden" id = "mon_info" data-name="<?php echo $mon_data['name'];?>" data-hp="<?php echo $mon_data['hp'];?>" data-atk = "<?php echo $mon_data['atk'];?>">
+      <input type="hidden" id = "mon_info"
+            data-name="<?php echo $mon_data['name'];?>"
+            data-hp="<?php echo $mon_data['hp'];?>"
+            data-atk = "<?php echo $mon_data['atk'];?>"
+            data-def = "<?php echo $mon_data['def'];?>"
+      >
       <hr style="height:0.1%;" color="c7c6c6">
       <div class="mid_area" style="height:45%;">
         <div name="battle_info" id="battle_info"  style="height:90%;width:100%; overflow-x:hidden;overflow-y:auto;">
           <h4 class="text-center">戰鬥開始</h4>
         </div>
-        <div style="margin-left:10%;width:80%">
+        <div style="margin-left:12%;width:80%">
 
             <button type="button" class="btn btn-default col-xs-1" style="width:10em;"  data-toggle="tooltip" data-placement="top" title="恢復 20 點魔力"  name="recmp" id="recmp" onclick="damage(0,0);" >冥想</button>
             <button type="button" class="btn btn-default col-xs-1" style="width:10em;"   data-toggle="tooltip" data-placement="top" title="1 倍攻擊力 0 消耗魔力" name="attack" id="attack" onclick="damage(1,0);">普通攻擊</button>
@@ -75,7 +81,14 @@ include('php/map_load.php');
       <hr style="height:0.1%;" color="c7c6c6">
 
       <?php include('layout/chara_user.php');?>
-      <input type="hidden" id = "role_info" data-round = "1" data-hp="<?php echo $role_data['hp'];?>" data-mp="<?php echo $role_data['mp'];?>" data-atk = "<?php echo $role_data['atk'];?>"></h4>
+      <input type="hidden" id = "role_info"
+            data-round = "1"
+            data-hp="<?php echo $role_data['hp'];?>"
+            data-mp="<?php echo $role_data['mp'];?>"
+            data-atk = "<?php echo $role_data['atk'];?>"
+            data-def = "<?php echo $role_data['def'];?>"
+            
+      >
   </body>
 
 </html>

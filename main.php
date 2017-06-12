@@ -6,6 +6,8 @@ ini_set('display_errors', 1);
 include("db/db_config.php");
 if(isset($_SESSION['name'])){
     include("php/map_load.php");
+    include("php/equip_load.php");
+
 }else{
     header('Location: login.php');
   exit;
@@ -20,13 +22,8 @@ if(isset($_SESSION['name'])){
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!--<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- Bootstrap -->
-    <!--<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/main.css">

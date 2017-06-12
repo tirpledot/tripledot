@@ -24,6 +24,7 @@
 						<div class="col-xs-2"><span >血量 : <span id="role_hp"><?php echo $role_data['hp']; ?></span>/<span id="role_maxhp"><?php echo $role_data['maxhp']; ?></span></span></div>
 						<div class="col-xs-2" ><span>魔力 : <span id="role_mp"><?php echo $role_data['mp']; ?></span>/<span id="role_maxmp"><?php echo $role_data['maxmp']; ?></span></span></div>
 						<div class="col-xs-2" ><span>攻擊力 : <span id="role_atk"><?php echo $role_data['atk']; ?></span></span></div>
+						<div class="col-xs-2" ><span>防禦 : <span id="role_def"><?php echo $role_data['def']; ?></span></span></div>
 					</div>
 					<div class="row u_info">
 							<div class="col-xs-2"><span>等級 : <span id="role_lv"><?php echo $role_data['lv']; ?></span></span></div>

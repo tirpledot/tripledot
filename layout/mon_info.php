@@ -24,6 +24,7 @@
 						<div class="col-xs-2"><span>血量 :<span id="mon_hp" ><?php echo $mon_data['hp']; ?></span></span></div>
 						<div class="col-xs-2" ><span>魔力 :<?php echo $mon_data['mp']; ?></span></div>
 						<div class="col-xs-2" ><span>攻擊力 :<?php echo $mon_data['atk']; ?></span></div>
+						<div class="col-xs-2" ><span>防禦 :<?php echo $mon_data['def']; ?></span></div>
 					</div>
 					<div class="row u_info">
 							<div class="col-xs-2"><span>等級 :<?php echo $mon_data['lv']; ?></span></div>

@@ -29,6 +29,15 @@
         $stmt = $db-> prepare($hsql);
         $stmt -> execute(array($role_data['maxhp'],$role_data['maxmp'],$_SESSION['name']));
         header('Location: main.php');
+    }else if(isset($_POST['buy'])){
+        $hsql = "select * from role where username = ?";
+        $stmt = $db-> prepare($hsql);
+        $stmt -> execute(array($_SESSION['name']));
+        $role_data = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($role_data['x'] == 0 && $role_data['y'] == -1){
+            header('Location: weapon.php');
+        }
+
     }else if(isset($_POST['escape'])){
         $rsql = "UPDATE role SET hp = ?,mp = ? where username = ?";
         $stmt = $db -> prepare($rsql);
@@ -55,6 +64,11 @@
     $stmt = $db-> prepare($sql);
     $stmt -> execute(array($role_data['role']));
     $skill_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $sql = "select * from equip where username = ?";
+    $stmt = $db-> prepare($sql);
+    $stmt -> execute(array($role_data['username']));
+    $equip_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $sql = "select * from map where x = ? and y = ?";
     $stmt = $db -> prepare($sql);
